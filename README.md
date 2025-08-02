@@ -97,3 +97,51 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/acmevita
 ```
 
 ---
+
+### Rodando Localmente como Desenvolvedor (sem Docker)
+
+Caso deseje rodar a aplicação localmente, siga os passos abaixo:
+
+#### 1. Crie um ambiente virtual
+
+```bash
+python -m venv .venv
+```
+
+#### 2. Ative o ambiente virtual
+
+```bash
+# Windows
+.venv\Scripts\activate
+
+# Linux/macOS
+source .venv/bin/activate
+```
+
+#### 3. Instale o gerenciador `uv`
+
+```bash
+pip install uv
+```
+
+#### 4. Instale as dependências do projeto com `uv`
+
+```bash
+uv sync
+```
+
+Isso instalará todas as dependências especificadas no `pyproject.toml` e no `uv.lock`.
+
+#### 5. Configure as variáveis de ambiente (opcional)
+
+Você pode criar um arquivo `.env` com o conteúdo:
+
+```env
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/acmevita
+```
+
+#### 6. Execute a aplicação
+
+```bash
+task run 
+```
