@@ -51,21 +51,6 @@ Após o container subir, acesse:
 * **Documentação Redoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ---
-
-## Rodando os Testes
-
-Se quiser executar os testes unitários (fora do container docker), use:
-
-```bash
-source .venv/Scripts/activate  # Windows
-# ou
-source .venv/bin/activate  # Linux/macOS
-
-pytest
-```
-
----
-
 ## Variáveis de Ambiente
 
 A variável de conexão com o banco já está configurada por padrão. Se quiser customizar, só edite o arquivo `.env` (ou crie um):
