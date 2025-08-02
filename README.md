@@ -51,15 +51,6 @@ Após o container subir, acesse:
 * **Documentação Redoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ---
-## Variáveis de Ambiente
-
-A variável de conexão com o banco já está configurada por padrão. Se quiser customizar, só edite o arquivo `.env` (ou crie um):
-
-```env
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/acmevita
-```
-
----
 
 ## Estrutura do Projeto
 
