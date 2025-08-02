@@ -1,45 +1,99 @@
-# ACMEVita
+````markdown
+# ACMEVita - Backend API
 
-Projeto de modelagem de dados e criação de uma API utilizando Python e qualquer framework de sua escolha (Flask, FastAPI, Django etc).
+- Python 3.13
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- Docker e Docker Compose
+- Pytest (para testes)
+- Uvicorn (servidor ASGI)
 
-**Este projeto é parte do processo de seleção de desenvolvedor backend da [Telavita](https://telavita.com.br).**
+---
 
-## Sobre o projeto
+## Requisitos
 
-A ACMEVita está expandindo seus negócios e precisa de um sistema para gerenciar seus departamentos, colaboradores e dependentes.
+Antes de iniciar, instale o docker se não tiver:
 
-O seu único desenvolvedor backend está de ferias, você foi recrutado para finalizar este projeto, boa sorte!
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Requisitos
+---
 
-#### Como um Usuário da API eu gostaria de consultar todos os departamentos para visualizar a organização da ACMEVita.
+## Bora lá rodar o Projeto
 
-* Cada departamento deve possuir um *nome do departamento*.
-* A API deve responder com uma listagem de departamentos no formato JSON informando o *nome do departamento* de cada departamento.
+### 1. Clone o repositório
 
-#### Como um Usuário da API eu gostaria de consultar todos os colaboradores de um departamento para visualizar a organização da ACMEVita.
+```bash
+git clone https://github.com/ocerqueira/projeto-vaga-backend.git
+cd acmevita-backend
+````
 
-* Cada colaborador deve possuir um *nome completo*.
-* Cada colaborador deve pertencer a *um* departamento.
-* Cada colaborador pode possuir *nenhum, um ou mais* dependententes.
-* A API deve responder com uma listagem de colaboradores do departamento no formato JSON informando o *nome completo* de cada colaborador e a respectiva flag booleana `have_dependents` caso o colaborador possua *um ou mais dependentes*.
+### 2. Inicie a aplicação com Docker Compose
 
-### Diferenciais
+```bash
+docker compose up --build
+```
 
-* Testes unitários
-* Referência (Swagger ou similar)
-* Documentação e instruções de configuração
-* Separação das camadas de responsabilidade (modelagem de dados, serialização, regras de negócio, etc)
-* Conteinerização
+Esse comando:
 
-### Instruções
+* Ele sobe o banco de dados PostgreSQL
+* Sobe o backend FastAPI
+* Executa automaticamente uma seed com dados de exemplo para popular o banco
 
-1. Faça um _fork_ ou download deste projeto.
-2. Trabalhe localmente no seu projeto, faça até o ponto que conseguir.
-3. Você está livre para organizar a estrutura do projeto como preferir.
-4. Você deve utilizar o framework escolhido para criar os endpoints da API.
-5. Você pode utilizar a ORM de sua preferência para modelagem de dados.
-6. Suba o seu projeto para o GitHub e habilite a funcionalidade de Issues.
-7. Nos envie o link para o seu projeto, **mesmo que não esteja finalizado!**
+---
 
-**Qualquer dúvida, [entre em contato](mailto:jc@telavita.com.br)!**
+## Acessando os Endpoints
+
+Após o container subir, acesse:
+
+* **Documentação Swagger UI:** [http://localhost:8000/docs](http://localhost:8000/docs)
+* **Documentação Redoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+---
+
+## Rodando os Testes
+
+Se quiser executar os testes unitários (fora do container docker), use:
+
+```bash
+source .venv/Scripts/activate  # Windows
+# ou
+source .venv/bin/activate  # Linux/macOS
+
+pytest
+```
+
+---
+
+## Variáveis de Ambiente
+
+A variável de conexão com o banco já está configurada por padrão. Se quiser customizar, só edite o arquivo `.env` (ou crie um):
+
+```env
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/acmevita
+```
+
+---
+
+## Estrutura do Projeto
+
+```
+├── app/
+│   ├── models/
+│   ├── routes/
+│   ├── schemas/
+│   ├── services/
+    |-- app.py
+│   └── database.py
+├── scripts/
+│   └── seed.py
+├── tests/
+│   └── test_app.py
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+├── README.md
+```
+
+---
