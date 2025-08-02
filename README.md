@@ -1,4 +1,4 @@
-````markdown
+
 # ACMEVita - Backend API
 
 - Python 3.13
