@@ -26,7 +26,7 @@ Antes de iniciar, instale o docker se não tiver:
 
 ```bash
 git clone https://github.com/ocerqueira/projeto-vaga-backend.git
-cd acmevita-backend
+cd projeto-vaga-backend
 ````
 
 ### 2. Inicie a aplicação com Docker Compose
@@ -38,8 +38,8 @@ docker compose up --build
 Esse comando:
 
 * Ele sobe o banco de dados PostgreSQL
-* Sobe o backend FastAPI
-* Executa automaticamente uma seed com dados de exemplo para popular o banco
+* Sobe o backend com FastAPI
+* Executa automaticamente uma seed com dados de exemplo para popular o banco de dados com departamentos e colaboradores
 
 ---
 
